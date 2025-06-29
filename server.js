@@ -34,17 +34,18 @@ app.get('/', (req, res) => {
 app.post('/api/generate-name', async (req, res) => {
   try {
     // AIに送信するプロンプト（指示）を定義します
-    const prompt = "あなたは創造的なコーギーの専門家です。コーギーのユニークで魅力的な名前を一つ提案してください。名前とその名前の短い由来や意味も創作してください。例：『名前：ビスケ、由来：こんがり焼いたビスケットのように、香ばしくて甘い性格だから。』";
+    // モデルが期待する形式に合わせるため、チャット形式のテンプレートを使用します
+    const prompt = `<|user|>\nあなたは創造的なコーギーの専門家です。コーギーのユニークで魅力的な名前を一つ提案してください。名前とその名前の短い由来や意味も創作してください。必ず「名前：(名前)、由来：(由来)」の形式で回答してください。例：『名前：ビスケ、由来：こんがり焼いたビスケットのように、香ばしくて甘い性格だから。』<|end|>\n<|assistant|>`;
     
     // Hugging Faceのテキスト生成モデルを呼び出します
     const result = await hf.textGeneration({
-      // 日本語の扱いに優れたオープンソースモデルを指定します
-      model: 'elyza/ELYZA-japanese-Llama-2-7b-instruct',
+      // より応答性が高く安定したモデルに変更
+      model: 'microsoft/Phi-3-mini-4k-instruct',
       inputs: prompt,
       parameters: {
         max_new_tokens: 100, // 生成するテキストの最大長
-        temperature: 0.7,   // 創造性の度合い (高いほどランダム)
-        repetition_penalty: 1.2, // 同じ言葉の繰り返しを避ける
+        temperature: 0.8,   // 創造性の度合い (高いほどランダム)
+        repetition_penalty: 1.1, // 同じ言葉の繰り返しを避ける
       }
     });
 
@@ -73,14 +74,15 @@ app.post('/api/interpret-behavior', async (req, res) => {
       return res.status(400).json({ error: '解釈する行動が指定されていません。' });
     }
     
-    const prompt = `あなたは賢くてユーモアのあるコーギーの達人です。ユーザーが「${behavior}」というコーギーの行動を観察しました。この行動からコーギーが何を考えているか、楽しく想像力豊かに「翻訳」してください。日本語で、簡潔に2～3文でお願いします。`;
+    const prompt = `<|user|>\nあなたは賢くてユーモアのあるコーギーの達人です。ユーザーが「${behavior}」というコーギーの行動を観察しました。この行動からコーギーが何を考えているか、楽しく想像力豊かに「翻訳」してください。日本語で、簡潔に2～3文でお願いします。<|end|>\n<|assistant|>`;
 
     const result = await hf.textGeneration({
-      model: 'elyza/ELYZA-japanese-Llama-2-7b-instruct',
+      // より応答性が高く安定したモデルに変更
+      model: 'microsoft/Phi-3-mini-4k-instruct',
       inputs: prompt,
       parameters: {
         max_new_tokens: 150,
-        temperature: 0.8,
+        temperature: 0.9,
       }
     });
 
