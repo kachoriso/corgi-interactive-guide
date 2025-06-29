@@ -1,4 +1,4 @@
-// server.js (Hugging Face版 - 軽量高速AIモデルに更新)
+// server.js (Hugging Face版 - タイムアウト対策版)
 
 // 必要なモジュールをインポートします
 const express = require('express');
@@ -36,13 +36,16 @@ app.post('/api/generate-name', async (req, res) => {
     
     // Hugging Faceのテキスト生成モデルを呼び出します
     const result = await hf.textGeneration({
-      // 軽量で高速な日本語モデルに変更
       model: 'line-corporation/japanese-large-lm-1.7b-instruction-sft',
       inputs: prompt,
       parameters: {
         max_new_tokens: 100, // 生成するテキストの最大長
         temperature: 0.8,   // 創造性の度合い (高いほどランダム)
         repetition_penalty: 1.1, // 同じ言葉の繰り返しを避ける
+      },
+      // タイムアウト対策：モデルの準備が完了するまで待機するオプションを追加
+      options: {
+        wait_for_model: true
       }
     });
 
@@ -74,12 +77,15 @@ app.post('/api/interpret-behavior', async (req, res) => {
     const prompt = `ユーザー: あなたは賢くてユーモアのあるコーギーの達人です。ユーザーが「${behavior}」というコーギーの行動を観察しました。この行動からコーギーが何を考えているか、楽しく想像力豊かに「翻訳」してください。日本語で、簡潔に2～3文でお願いします。\nシステム: `;
 
     const result = await hf.textGeneration({
-      // 軽量で高速な日本語モデルに変更
       model: 'line-corporation/japanese-large-lm-1.7b-instruction-sft',
       inputs: prompt,
       parameters: {
         max_new_tokens: 150,
         temperature: 0.7,
+      },
+      // タイムアウト対策：モデルの準備が完了するまで待機するオプションを追加
+      options: {
+        wait_for_model: true
       }
     });
 
