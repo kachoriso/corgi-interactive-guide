@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
@@ -20,15 +20,14 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            height: 300px;
         }
         @media (max-width: 768px) {
             .chart-container {
-                height: 300px;
+                height: 250px;
             }
         }
         .flowchart-step {
@@ -58,63 +57,80 @@
         }
         .gemini-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
         }
     </style>
 </head>
 <body class="text-gray-800">
 
-<div class="container mx-auto p-4 md:p-8 max-w-7xl">
+<div class="container mx-auto px-4 max-w-7xl">
     
-    <header class="text-center py-8 md:py-12">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4" style="color: #F94144;">コーギー完全ガイド</h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-600">カフェ訪問が100倍楽しくなる！愛らしいコーギーの全てをデータで紐解くインフォグラフィック。</p>
+    <header class="text-center py-12 md:py-16">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6" style="color: #F94144;">コーギー完全ガイド</h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-600 leading-relaxed">カフェ訪問が100倍楽しくなる！愛らしいコーギーの全てをデータで紐解くインタラクティブガイド。</p>
     </header>
 
-    <main class="space-y-16 md:space-y-24">
+    <main class="space-y-20 md:space-y-24">
 
         
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #43AA8B;">そっくりだけど違う！二つのコーギー</h2>
+        <section class="section-padding">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #43AA8B;">そっくりだけど違う！二つのコーギー</h2>
             <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">「コーギー」には、実は2つの異なる犬種が存在します。最も人気な「ペンブローク」と、歴史が古い「カーディガン」。その違いを比べてみましょう。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold mb-4 text-center">体格データ比較</h3>
-                    <p class="text-sm text-center text-slate-500 mb-4">カーディガンの方が全体的に骨太でがっしりした体格です。</p>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-xl font-bold mb-6 text-center">体格データ比較</h3>
+                    <p class="text-sm text-center text-slate-500 mb-6">カーディガンの方が全体的に骨太でがっしりした体格です。</p>
                     <div class="chart-container">
                         <canvas id="sizeComparisonChart"></canvas>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold mb-4 text-center">特徴ひとめ比較</h3>
-                    <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-xl font-bold mb-6 text-center">特徴ひとめ比較</h3>
+                    <div class="space-y-6">
                         
                         <div class="flex items-start">
-                            <div class="icon-bg p-3 rounded-full mr-4"><span class="text-2xl">🐾</span></div>
-                            <div>
-                                <h4 class="font-bold">尻尾</h4>
+                            <div class="icon-bg p-3 rounded-full mr-4 flex-shrink-0"><span class="text-2xl">🐾</span></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold mb-2">尻尾</h4>
                                 <p class="text-sm"><strong style="color: #F3722C;">ペンブローク:</strong> 本来は断尾されて短い。近年は長いままの個体も。</p>
-                                <p class="text-sm"><strong style="color: #577590;">カーディガン:</strong> キツネのように長く、ふさふさ。</p>
+                                <p class="text-sm mt-1"><strong style="color: #577590;">カーディガン:</strong> キツネのように長く、ふさふさ。</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="icon-bg p-3 rounded-full mr-4"><span class="text-2xl">👂</span></div>
-                            <div>
-                                <h4 class="font-bold">耳</h4>
+                            <div class="icon-bg p-3 rounded-full mr-4 flex-shrink-0"><span class="text-2xl">👂</span></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold mb-2">耳</h4>
                                 <p class="text-sm"><strong style="color: #F3722C;">ペンブローク:</strong> 先が尖り気味で、キツネ顔の印象。</p>
-                                <p class="text-sm"><strong style="color: #577590;">カーディガン:</strong> より大きく、先端が丸い。</p>
+                                <p class="text-sm mt-1"><strong style="color: #577590;">カーディガン:</strong> より大きく、先端が丸い。</p>
                             </div>
                         </div>
                          
                         <div class="flex items-start">
-                            <div class="icon-bg p-3 rounded-full mr-4"><span class="text-2xl">🎨</span></div>
-                            <div>
-                                <h4 class="font-bold">毛色</h4>
+                            <div class="icon-bg p-3 rounded-full mr-4 flex-shrink-0"><span class="text-2xl">🎨</span></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold mb-2">毛色</h4>
                                 <p class="text-sm"><strong style="color: #F3722C;">ペンブローク:</strong> レッド、セーブル、フォーン、ブラック＆タン。</p>
-                                <p class="text-sm"><strong style="color: #577590;">カーディガン:</strong> より多様。ペンブロークにはない「ブリンドル（虎柄）」が特徴的。</p>
+                                <p class="text-sm mt-1"><strong style="color: #577590;">カーディガン:</strong> より多様。ペンブロークにはない「ブリンドル（虎柄）」が特徴的。</p>
                             </div>
                         </div>
                     </div>
@@ -123,29 +139,29 @@
         </section>
 
         
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #43AA8B;">賢くて、少し頑固？コーギーの心の内</h2>
+        <section class="section-padding">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #43AA8B;">賢くて、少し頑固？コーギーの心の内</h2>
             <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">元々は牛を追う牧畜犬。その歴史が、賢くエネルギッシュで、時に頑固な彼らの性格を形作りました。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 
                 <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 flex items-center"><span class="text-2xl mr-3">💡</span>知性と学習能力</h3>
-                        <p>非常に賢く、物覚えが良いですが、その分、納得しないことには従わない頑固な一面も。一貫性のあるしつけが重要です。</p>
+                    <div class="bg-white rounded-lg p-6 shadow-md card-hover">
+                        <h3 class="text-xl font-bold mb-3 flex items-center"><span class="text-2xl mr-3">💡</span>知性と学習能力</h3>
+                        <p class="text-gray-700">非常に賢く、物覚えが良いですが、その分、納得しないことには従わない頑固な一面も。一貫性のあるしつけが重要です。</p>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 flex items-center"><span class="text-2xl mr-3">⚡️</span>エネルギーレベル</h3>
-                        <p>見た目によらずスタミナは抜群。短い足で一日中牧場を駆け回っていたタフガイです。毎日の運動と遊びが欠かせません。</p>
+                    <div class="bg-white rounded-lg p-6 shadow-md card-hover">
+                        <h3 class="text-xl font-bold mb-3 flex items-center"><span class="text-2xl mr-3">⚡️</span>エネルギーレベル</h3>
+                        <p class="text-gray-700">見た目によらずスタミナは抜群。短い足で一日中牧場を駆け回っていたタフガイです。毎日の運動と遊びが欠かせません。</p>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 flex items-center"><span class="text-2xl mr-3">❤️</span>社交性</h3>
-                        <p>特にペンブロークは非常に人懐っこく、友好的な性格。一方で、カーディガンはやや慎重で落ち着いた番犬気質も持ち合わせています。</p>
+                    <div class="bg-white rounded-lg p-6 shadow-md card-hover">
+                        <h3 class="text-xl font-bold mb-3 flex items-center"><span class="text-2xl mr-3">❤️</span>社交性</h3>
+                        <p class="text-gray-700">特にペンブロークは非常に人懐っこく、友好的な性格。一方で、カーディガンはやや慎重で落ち着いた番犬気質も持ち合わせています。</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                     <h3 class="text-xl font-bold mb-4 text-center">性格レーダーチャート</h3>
-                     <p class="text-sm text-center text-slate-500 mb-4">犬種による一般的な性格傾向を比較。</p>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                     <h3 class="text-xl font-bold mb-6 text-center">性格レーダーチャート</h3>
+                     <p class="text-sm text-center text-slate-500 mb-6">犬種による一般的な性格傾向を比較。</p>
                     <div class="chart-container">
                         <canvas id="personalityRadarChart"></canvas>
                     </div>
@@ -154,190 +170,194 @@
         </section>
 
         
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #43AA8B;">コーギー語をマスターしよう！</h2>
+        <section class="section-padding">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #43AA8B;">コーギー語をマスターしよう！</h2>
             <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">言葉を話せなくても、体全体で気持ちを伝えてくれます。特に大きな耳と表情に注目です。</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">쫑긋</span></div>
-                    <h3 class="font-bold text-lg mb-2">耳がピン！と前向き</h3>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                    <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">🦊</span></div>
+                    <h3 class="font-bold text-lg mb-3">耳がピン！と前向き</h3>
                     <p class="text-sm text-slate-600">何かに興味津々、または集中・警戒しているサインです。</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">ぺたん</span></div>
-                    <h3 class="font-bold text-lg mb-2">耳が後ろにペタン</h3>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                    <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">😊</span></div>
+                    <h3 class="font-bold text-lg mb-3">耳が後ろにペタン</h3>
                     <p class="text-sm text-slate-600">リラックスしている時は「大好き！」のサイン。体がこわばっているなら恐怖や不安かも。</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
                     <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">😄</span></div>
-                    <h3 class="font-bold text-lg mb-2">コーギースマイル</h3>
+                    <h3 class="font-bold text-lg mb-3">コーギースマイル</h3>
                     <p class="text-sm text-slate-600">口角が上がり、リラックスした表情。満足していて幸せな気持ちの表れです。</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
                     <div class="icon-bg inline-block p-4 rounded-full mb-4"><span class="text-4xl">🍑</span></div>
-                    <h3 class="font-bold text-lg mb-2">お尻フリフリ</h3>
+                    <h3 class="font-bold text-lg mb-3">お尻フリフリ</h3>
                     <p class="text-sm text-slate-600">尻尾の代わりに体全体で喜びを表現！最高に嬉しい時のサインです。</p>
                 </div>
             </div>
         </section>
         
-        <section class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center">
-                <div class="md:col-span-1">
-                     <h2 class="text-3xl font-bold mb-4" style="color: #43AA8B;">王室が愛した犬</h2>
-                     <p class="text-slate-600">エリザベス2世女王が生涯愛したことで、ペンブローク・コーギーは世界的なスターになりました。</p>
-                </div>
-                <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 rounded-lg p-6">
-                        <p class="stat-text text-6xl font-bold" style="color: #F94144;">30+</p>
-                        <p class="font-bold mt-2">女王が生涯で飼った数</p>
+        <section class="section-padding">
+            <div class="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center items-center">
+                    <div class="lg:col-span-1">
+                         <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #43AA8B;">王室が愛した犬</h2>
+                         <p class="text-slate-600 text-lg">エリザベス2世女王が生涯愛したことで、ペンブローク・コーギーは世界的なスターになりました。</p>
                     </div>
-                    <div class="bg-slate-50 rounded-lg p-6">
-                        <p class="stat-text text-6xl font-bold" style="color: #F94144;">1944</p>
-                        <p class="font-bold mt-2">愛犬「スーザン」と出会った年</p>
-                        <p class="text-xs text-slate-500">その後の王室コーギーのほとんどがスーザンの子孫</p>
+                    <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <p class="stat-text text-6xl font-bold" style="color: #F94144;">30+</p>
+                            <p class="font-bold mt-3 text-lg">女王が生涯で飼った数</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <p class="stat-text text-6xl font-bold" style="color: #F94144;">1944</p>
+                            <p class="font-bold mt-3 text-lg">愛犬「スーザン」と出会った年</p>
+                            <p class="text-sm text-slate-500 mt-2">その後の王室コーギーのほとんどがスーザンの子孫</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #43AA8B;">知っておきたい健康のこと</h2>
+        <section class="section-padding">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #43AA8B;">知っておきたい健康のこと</h2>
             <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">「胴長短足」という愛らしい体型は、背骨や腰に負担がかかりやすいという側面も持っています。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold mb-4">注意したい主な病気</h3>
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold mb-6">注意したい主な病気</h3>
                     <ul class="space-y-4">
-                        <li class="pl-4 border-l-4" style="border-color: #F94144;">
-                            <h4 class="font-bold">椎間板ヘルニア (IVDD)</h4>
-                            <p class="text-sm text-slate-600">背骨のクッションが神経を圧迫し、痛みや麻痺を引き起こします。</p>
+                        <li class="pl-4 border-l-4 py-2" style="border-color: #F94144;">
+                            <h4 class="font-bold text-lg">椎間板ヘルニア (IVDD)</h4>
+                            <p class="text-sm text-slate-600 mt-1">背骨のクッションが神経を圧迫し、痛みや麻痺を引き起こします。</p>
                         </li>
-                        <li class="pl-4 border-l-4" style="border-color: #F3722C;">
-                             <h4 class="font-bold">変性性脊髄症 (DM)</h4>
-                            <p class="text-sm text-slate-600">痛みを伴わずにゆっくりと麻痺が進行する、高齢のコーギーに多い病気です。</p>
+                        <li class="pl-4 border-l-4 py-2" style="border-color: #F3722C;">
+                             <h4 class="font-bold text-lg">変性性脊髄症 (DM)</h4>
+                            <p class="text-sm text-slate-600 mt-1">痛みを伴わずにゆっくりと麻痺が進行する、高齢のコーギーに多い病気です。</p>
                         </li>
                     </ul>
-                     <div class="mt-6 bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-r-lg">
-                        <p class="font-bold">最大の予防は「体重管理」です！</p>
+                     <div class="mt-8 bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-r-lg">
+                        <p class="font-bold text-lg">最大の予防は「体重管理」です！</p>
                     </div>
                 </div>
                 
-                 <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <h3 class="text-xl font-bold mb-4">腰に優しい正しい抱き方</h3>
+                 <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <h3 class="text-xl font-bold mb-6">腰に優しい正しい抱き方</h3>
                     <div class="flex flex-col items-center">
-                        <div class="w-48 h-24 bg-orange-200 rounded-full flex items-center justify-center mb-2 relative">
+                        <div class="w-48 h-24 bg-orange-200 rounded-full flex items-center justify-center mb-4 relative">
                              <span class="font-bold text-orange-800">コーギー</span>
                              <div class="absolute w-12 h-8 bg-orange-300 rounded-full -left-4 top-1/2 -translate-y-1/2"></div>
                              <div class="absolute w-12 h-8 bg-orange-300 rounded-full -right-4 top-1/2 -translate-y-1/2"></div>
                         </div>
-                        <div class="flex justify-between w-64">
+                        <div class="flex justify-between w-64 mb-4">
                             <span class="text-4xl">👇</span>
                              <span class="text-4xl">👇</span>
                         </div>
                          <div class="flex justify-between w-72">
                              <div class="text-center">
-                                 <div class="text-5xl">✋</div>
-                                 <p class="font-bold mt-1">胸を支える</p>
+                                 <div class="text-5xl mb-2">✋</div>
+                                 <p class="font-bold">胸を支える</p>
                              </div>
                              <div class="text-center">
-                                 <div class="text-5xl">✋</div>
-                                 <p class="font-bold mt-1">お尻を支える</p>
+                                 <div class="text-5xl mb-2">✋</div>
+                                 <p class="font-bold">お尻を支える</p>
                              </div>
                          </div>
-                         <p class="mt-4 text-sm text-slate-600 font-semibold">背中が地面と水平になるように、胸とお尻をしっかり支えて持ち上げましょう。</p>
+                         <p class="mt-6 text-sm text-slate-600 font-semibold bg-orange-50 p-4 rounded-lg">背中が地面と水平になるように、胸とお尻をしっかり支えて持ち上げましょう。</p>
                     </div>
                  </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #43AA8B;">カフェでの上手な接し方</h2>
+        <section class="section-padding">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #43AA8B;">カフェでの上手な接し方</h2>
             <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">コーギーに好かれるための3ステップ。彼らのペースを尊重するのが一番のコツです。</p>
-            <div class="relative flex flex-col items-center md:flex-row md:justify-center md:items-start gap-8 md:gap-0">
+            <div class="relative flex flex-col items-center lg:flex-row lg:justify-center lg:items-start gap-8 lg:gap-4 max-w-5xl mx-auto">
                 
-                <div class="flex flex-col items-center text-center w-60 z-10">
-                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4" style="color: #F3722C;">1</div>
-                    <div class="bg-white p-4 rounded-lg shadow-lg">
-                        <h3 class="font-bold">目線を合わせる</h3>
-                        <p class="text-sm">ゆっくりしゃがんで、威圧感を与えないようにします。</p>
+                <div class="flex flex-col items-center text-center max-w-xs z-10">
+                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-6 shadow-lg" style="color: #F3722C;">1</div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="font-bold text-lg mb-2">目線を合わせる</h3>
+                        <p class="text-sm text-gray-600">ゆっくりしゃがんで、威圧感を与えないようにします。</p>
                     </div>
                 </div>
                 
-                <div class="w-full md:w-auto flex justify-center items-center">
-                     <span class="text-4xl font-bold flowchart-arrow transform -rotate-90 md:rotate-0">→</span>
+                <div class="hidden lg:flex items-center px-4">
+                     <span class="text-5xl font-bold flowchart-arrow">→</span>
                 </div>
                 
-                <div class="flex flex-col items-center text-center w-60 z-10">
-                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4" style="color: #F3722C;">2</div>
-                    <div class="bg-white p-4 rounded-lg shadow-lg">
-                        <h3 class="font-bold">犬から来るのを待つ</h3>
-                        <p class="text-sm">犬が興味を示したら、手の甲の匂いを嗅がせてあげます。</p>
+                <div class="flex flex-col items-center text-center max-w-xs z-10">
+                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-6 shadow-lg" style="color: #F3722C;">2</div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="font-bold text-lg mb-2">犬から来るのを待つ</h3>
+                        <p class="text-sm text-gray-600">犬が興味を示したら、手の甲の匂いを嗅がせてあげます。</p>
                     </div>
                 </div>
                  
-                 <div class="w-full md:w-auto flex justify-center items-center">
-                     <span class="text-4xl font-bold flowchart-arrow transform -rotate-90 md:rotate-0">→</span>
+                 <div class="hidden lg:flex items-center px-4">
+                     <span class="text-5xl font-bold flowchart-arrow">→</span>
                  </div>
                 
-                <div class="flex flex-col items-center text-center w-60 z-10">
-                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4" style="color: #F3722C;">3</div>
-                    <div class="bg-white p-4 rounded-lg shadow-lg">
-                        <h3 class="font-bold">優しく撫でる</h3>
-                        <p class="text-sm">胸や肩、あごの下など、犬が安心する場所から触れましょう。</p>
+                <div class="flex flex-col items-center text-center max-w-xs z-10">
+                    <div class="bg-white rounded-full border-4 flowchart-step w-24 h-24 flex items-center justify-center text-4xl font-bold mb-6 shadow-lg" style="color: #F3722C;">3</div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="font-bold text-lg mb-2">優しく撫でる</h3>
+                        <p class="text-sm text-gray-600">胸や肩、あごの下など、犬が安心する場所から触れましょう。</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 text-center max-w-lg mx-auto bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg">
-                <p class="font-bold">注意：犬が嫌がる素振りを見せたら、すぐに触るのをやめましょう！</p>
+            <div class="mt-12 text-center max-w-lg mx-auto bg-red-100 border-l-4 border-red-500 text-red-700 p-6 rounded-r-lg">
+                <p class="font-bold text-lg">注意：犬が嫌がる素振りを見せたら、すぐに触るのをやめましょう！</p>
             </div>
         </section>
 
         <!-- Gemini API Features Start -->
-        <section class="bg-gradient-to-br from-orange-50 to-amber-100 p-8 rounded-2xl shadow-lg">
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #F3722C;">✨ AIコーギー・アシスタント ✨</h2>
-            <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600">Gemini AI が、あなたのコーギー体験をもっと豊かにします。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- AI Name Generator -->
-                <div class="bg-white rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-4">AI 名前ジェネレーター</h3>
-                    <p class="text-sm text-slate-500 mb-6">あなたの未来の相棒に、AIがユニークな名前とストーリーを提案します。</p>
-                    <button id="generateNameBtn" class="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded-lg gemini-button">
-                        新しい名前を生成する ✨
-                    </button>
-                    <div id="nameResult" class="mt-6 p-4 bg-slate-50 rounded-lg min-h-[100px]">
-                        <p class="text-slate-400 text-center">ボタンを押して名前を生成</p>
+        <section class="section-padding">
+            <div class="bg-gradient-to-br from-orange-50 to-amber-100 p-8 md:p-12 rounded-2xl shadow-xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" style="color: #F3722C;">✨ AIコーギー・アシスタント ✨</h2>
+                <p class="text-center max-w-2xl mx-auto mb-12 text-slate-600 text-lg">Groq AI が、あなたのコーギー体験をもっと豊かにします。</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- AI Name Generator -->
+                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                        <h3 class="text-xl font-bold mb-4">🎯 AI 名前ジェネレーター</h3>
+                        <p class="text-sm text-slate-500 mb-6">あなたの未来の相棒に、AIがユニークな名前とストーリーを提案します。</p>
+                        <button id="generateNameBtn" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg gemini-button text-lg">
+                            新しい名前を生成する ✨
+                        </button>
+                        <div id="nameResult" class="mt-6 p-6 bg-slate-50 rounded-lg min-h-[120px] flex items-center justify-center">
+                            <p class="text-slate-400 text-center">ボタンを押して名前を生成</p>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- AI Behavior Interpreter -->
-                <div class="bg-white rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-4">AI 気持ち翻訳機</h3>
-                    <p class="text-sm text-slate-500 mb-4">コーギーの行動を入力すると、AIがその気持ちを「翻訳」します。</p>
-                    <textarea id="behaviorInput" class="w-full border rounded-lg p-2 mb-4 h-24" placeholder="例：しっぽを振りながら、ぐるぐる回っています"></textarea>
-                    <button id="interpretBtn" class="w-full bg-teal-500 text-white font-bold py-3 px-4 rounded-lg gemini-button">
-                        気持ちを翻訳する ✨
-                    </button>
-                    <div id="interpretResult" class="mt-6 p-4 bg-slate-50 rounded-lg min-h-[100px]">
-                        <p class="text-slate-400 text-center">コーギーの行動を入力して翻訳</p>
+                    
+                    <!-- AI Behavior Interpreter -->
+                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                        <h3 class="text-xl font-bold mb-4">💭 AI 気持ち翻訳機</h3>
+                        <p class="text-sm text-slate-500 mb-4">コーギーの行動を入力すると、AIがその気持ちを「翻訳」します。</p>
+                        <textarea id="behaviorInput" class="w-full border-2 border-gray-200 rounded-lg p-3 mb-4 h-24 focus:border-teal-500 focus:outline-none" placeholder="例：しっぽを振りながら、ぐるぐる回っています"></textarea>
+                        <button id="interpretBtn" class="w-full bg-teal-500 text-white font-bold py-3 px-6 rounded-lg gemini-button text-lg">
+                            気持ちを翻訳する ✨
+                        </button>
+                        <div id="interpretResult" class="mt-6 p-6 bg-slate-50 rounded-lg min-h-[120px] flex items-center justify-center">
+                            <p class="text-slate-400 text-center">コーギーの行動を入力して翻訳</p>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
         <!-- Gemini API Features End -->
 
     </main>
 
-    <footer class="text-center py-12 mt-16 border-t">
-        <p class="font-bold text-lg" style="color: #F94144;">これであなたもコーギーマスター！</p>
-        <p class="text-slate-600">知識を深めて、コーギーたちとの素敵な時間をお過ごしください。</p>
+    <footer class="text-center py-16 mt-20 border-t-2 border-gray-200">
+        <p class="font-bold text-2xl mb-2" style="color: #F94144;">これであなたもコーギーマスター！</p>
+        <p class="text-slate-600 text-lg">知識を深めて、コーギーたちとの素敵な時間をお過ごしください。</p>
     </footer>
 
 </div>
@@ -370,24 +390,28 @@
                 legend: {
                     position: 'top',
                     labels: {
+                        padding: 20,
                         font: {
                            family: "'Noto Sans JP', sans-serif",
+                           size: 14
                         }
                     }
                 },
                 tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    cornerRadius: 8,
                     callbacks: {
                         title: tooltipTitleCallback
                     },
-                     bodyFont: {
-                        font: {
-                           family: "'Noto Sans JP', sans-serif",
-                        }
+                    bodyFont: {
+                        family: "'Noto Sans JP', sans-serif",
+                        size: 14
                     },
                     titleFont: {
-                         font: {
-                           family: "'Noto Sans JP', sans-serif",
-                        }
+                        family: "'Noto Sans JP', sans-serif",
+                        size: 16,
+                        weight: 'bold'
                     }
                 }
             }
@@ -402,13 +426,17 @@
                     data: [10.5, 27.5],
                     backgroundColor: energeticPlayfulPalette.orange,
                     borderColor: energeticPlayfulPalette.orange,
-                    borderWidth: 1
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    barPercentage: 0.8
                 }, {
                     label: 'カーディガン',
                     data: [14, 30],
                     backgroundColor: energeticPlayfulPalette.slateBlue,
                     borderColor: energeticPlayfulPalette.slateBlue,
-                    borderWidth: 1
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    barPercentage: 0.8
                 }]
             },
             options: {
@@ -418,7 +446,19 @@
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'キログラム / センチメートル'
+                            text: 'キログラム / センチメートル',
+                            font: {
+                                size: 14,
+                                family: "'Noto Sans JP', sans-serif"
+                            }
+                        },
+                        grid: {
+                            borderDash: [5, 5]
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
                         }
                     }
                 }
@@ -438,7 +478,9 @@
                     pointBackgroundColor: energeticPlayfulPalette.orange,
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: energeticPlayfulPalette.orange
+                    pointHoverBorderColor: energeticPlayfulPalette.orange,
+                    borderWidth: 3,
+                    pointRadius: 5
                 }, {
                     label: 'カーディガン',
                     data: [5, 3, 3, 4, 5],
@@ -448,7 +490,9 @@
                     pointBackgroundColor: energeticPlayfulPalette.slateBlue,
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: energeticPlayfulPalette.slateBlue
+                    pointHoverBorderColor: energeticPlayfulPalette.slateBlue,
+                    borderWidth: 3,
+                    pointRadius: 5
                 }]
             },
             options: {
@@ -456,18 +500,24 @@
                  scales: {
                     r: {
                         angleLines: {
-                            display: true
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.1)'
                         },
                         suggestedMin: 0,
                         suggestedMax: 5,
                         pointLabels: {
                             font: {
-                                size: 12,
+                                size: 14,
                                 family: "'Noto Sans JP', sans-serif",
+                                weight: '500'
                             }
                         },
                         ticks: {
-                           stepSize: 1
+                           stepSize: 1,
+                           backdropColor: 'transparent'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
                         }
                     }
                 }
@@ -482,11 +532,18 @@
         const interpretResult = document.getElementById('interpretResult');
 
         const showLoader = (element) => {
+            element.classList.remove('justify-center', 'items-center');
             element.innerHTML = '<div class="loader"></div>';
         }
         
         const displayError = (element, message) => {
-             element.innerHTML = `<p class="text-red-500 text-center">${message}</p>`;
+            element.classList.add('justify-center', 'items-center');
+            element.innerHTML = `<p class="text-red-500 text-center font-medium">${message}</p>`;
+        }
+        
+        const displayResult = (element, content) => {
+            element.classList.remove('justify-center', 'items-center');
+            element.innerHTML = content;
         }
         
         generateNameBtn.addEventListener('click', async () => {
@@ -504,7 +561,12 @@
                 const data = await response.json();
 
                 if (data.name && data.story) {
-                    nameResult.innerHTML = `<h4 class="font-bold text-lg text-center" style="color: ${energeticPlayfulPalette.orange};">${data.name}</h4><p class="text-sm text-slate-600 mt-2 text-center">${data.story}</p>`;
+                    const content = `
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-xl text-center" style="color: ${energeticPlayfulPalette.orange};">${data.name}</h4>
+                            <p class="text-sm text-slate-600 text-center leading-relaxed">${data.story}</p>
+                        </div>`;
+                    displayResult(nameResult, content);
                 } else {
                     throw new Error("Invalid response structure from server.");
                 }
@@ -535,7 +597,8 @@
                 const data = await response.json();
                 
                 if (data.interpretation) {
-                    interpretResult.innerHTML = `<p class="text-slate-700 text-center leading-relaxed">${data.interpretation}</p>`;
+                    const content = `<p class="text-slate-700 text-center leading-relaxed text-base">${data.interpretation}</p>`;
+                    displayResult(interpretResult, content);
                 } else {
                     throw new Error("Invalid response structure from server.");
                 }
